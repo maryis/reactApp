@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 
 export const router_config=[
     {
-        path: '/',
+        path: '/home',
         exact: true,
         Component : Home,
         Master: MasterPage1,
@@ -46,7 +46,7 @@ export const router_config=[
 
     },
     {
-        path: '/login',
+        path: '/',
         exact: true,
         Component : Login,
         title: 'Logout'

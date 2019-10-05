@@ -16,18 +16,16 @@ class Login extends React.Component {
     }
 
     state = {
-        fieldValues: {},
-        fieldNames: ['user', 'pass'],
+        user : "",
+        pass : "",
         errors: []
     }
 
     handleInput = (e) => {
         const {name, value} = e.target
-        let f = this.state.fieldValues
-        f[name] = value;
-        this.setState({
-            fieldValues: f
-        })
+       this.setState({
+           [name]:value
+       })
 
     }
 
@@ -35,15 +33,15 @@ class Login extends React.Component {
         e.preventDefault();
 
 
-        let fields = this.state.fieldValues;
+        let {user,pass} = this.state;
         let er = {}
         let isFormValid = true
 
-        if (!this.validName(fields['user'])) {
+        if (!this.validName(user)) {
             er['user'] = '**user**'  // or 'Only letters
             isFormValid = false
         }
-        if (!fields['pass']) {
+        if (!pass) {
             er['pass'] = '**pass**'
             isFormValid = false
         }
@@ -58,12 +56,12 @@ class Login extends React.Component {
             //return( <Redirect to='/report'/>);
 
             //it works, but does not show the page !
-            //window.location='http://localhost:3000/report';
+            window.location='http://localhost:3000/home';
         }
 
     }
-    validName(name)
-    {
+
+    validName(name) {
         return name && name.match(/^[a-zA-Z]+$/)  //only letters
     }
 
@@ -72,14 +70,14 @@ class Login extends React.Component {
             <div>
                 <div className='form-group form-inline'>
                     <label className='col-form-label w-25' htmlFor='user'>User</label>
-                    <input className='form-control w-75'
-                           name='user' value={this.state.fieldValues['user']} onChange={this.handleInput}></input>
+                    <input className='form-control w-75' placeholder="username"
+                           name='user' value={this.state.user} onChange={this.handleInput}></input>
                     <span className='text-danger'>{this.state.errors['user']} </span>
                 </div>
                 <div className='form-group form-inline'>
                     <label className='col-form-label w-25' htmlFor='pass'>Pass</label>
-                    <input className='form-control w-75'
-                           name='pass' value={this.state.fieldValues['pass']} onChange={this.handleInput}></input>
+                    <input className='form-control w-75' placeholder="password"
+                           name='pass' value={this.state.pass} onChange={this.handleInput}></input>
                     <span className='text-danger'>{this.state.errors['pass']} </span>
 
                 </div>

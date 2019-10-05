@@ -15,7 +15,7 @@ class App extends React.Component {
                     <Route path={item.path} exact={item.exact} key={item.path || 'NoPage'}
                            render={(props) => (
                                <item.Master >
-                                   <item.Component></item.Component>
+                                   <item.Component props></item.Component>
                                </item.Master>
                            )}/>
                            :

@@ -13,11 +13,16 @@ class Slider extends React.Component {
     }
 
     next = () => {
-        let i = this.state.currentId + 1;
-        if (i > 2)
-            i = 0;
-        this.setState({
-            currentId: i
+
+        this.setState((prevStat)=>{
+
+                let i = prevStat.currentId + 1;
+                if (i > 2)
+                    i = 0;
+
+                return{
+                currentId: i
+            }
         })
 
     }

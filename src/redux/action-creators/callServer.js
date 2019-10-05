@@ -56,7 +56,7 @@ export const saveAction = (compState) => {
         let item = {userId: 1, ...compState}
         console.log(item)
         Axios({
-            //the resource will not be really deleted on the server but it will be faked with status=200
+            //the resource will not be really inserted on the server but it will be faked with status=200
             url: 'https://jsonplaceholder.typicode.com/todos',
             method: 'post',
             data: item
